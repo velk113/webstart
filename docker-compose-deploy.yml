@@ -1,0 +1,36 @@
+version: '3.7'
+
+services: 
+  app:
+    build:
+      context: .
+    volumes:
+      - static_data:/vol/web
+    depends_on: 
+      - db
+
+  proxy:
+    build:
+      context: ./proxy
+    volumes:
+      - static_data:/vol/static
+    ports:
+      - "80:80"
+    depends_on: 
+      - app
+
+  db:
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=breath
+
+volumes: 
+  static_data:
+  postgres_data:
+
+
+  

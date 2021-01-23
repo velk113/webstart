@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<h1>dsadsadsad</h1>
+<div style="display: flex;">
+    <div>
+        <div id="delivery_widget" style="width: 1400px; height: 600px;"></div>
+        <div style="display: flex;">
+            <h4>Последний выбранный ПВЗ</h4>
+            <div style="margin-left: auto;color:gray;">ПВЗ загружено: <span id="pvzLoaded" style="font-weight: bold;"></span></div>
+        </div>
+        <textarea id="last_delivery_point" rows="10" cols="45" style="width: 1400px; height: 300px;" name="text"></textarea>
+        
+    </div>
+    <div style="display: flex;">
+        <div style="display: flex; flex-direction: column; padding-left: 10px;">
+            <label for="weight">Общий вес (в граммах)</label>
+            <input id="weight" value="4000">
+            <label for="height">Габариты упаковки. Высота (в сантиметрах)</label>
+            <input id="height" value="10">
+            <label for="width">Габариты упаковки. Ширина (в сантиметрах)</label>
+            <input id="width" value="10">
+            <label for="length">Габариты упаковки. Длина (в сантиметрах)</label>
+            <input id="length" value="10">
+            <button id="addPackage">Добавить</button>
+        </div>
+        <div style="display: flex; flex-direction: column; margin-left: 40px;">
+            <label for="packages">Упаковки в виджете</label>
+            <textarea id="packages" rows="10" cols="45" style="height: 350px;">
+            </textarea>
+            <button id='showPackages'>Показать</button>
+            <button id='clearPackages'>Очистить</button>
+        </div>
+    </div>
+</div>
+{% csrf_token %}
+{% endblock content %}
+
+{% block scripts %}
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=40deef6b-c4b6-4f7a-a953-f6143b7f7b50&lang=ru_RU" type="text/javascript"></script>
+    <script src='{% static 'cdek_widget/delivery_widget.js' %}'></script>
+    <script src='{% static 'cdek_widget/main.js' %}'></script>
+{% endblock %}
+
