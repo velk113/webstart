@@ -17,7 +17,7 @@ python manage.py collectstatic --noinput
 python manage.py migrate
 
 #python manage.py runserver 0.0.0.0:8000
-gunicorn config.wsgi:application \
+gunicorn core.wsgi:application \
 --bind 0.0.0.0:8000 \
 --log-level=debug
 
