@@ -3,9 +3,10 @@ import environ
 from pathlib import Path
 
 
-env = environ.Env()
-
 BASE_DIR = Path(__file__).resolve().parent.parent
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 
 CDEK_API = {
     'CDEK_ACCOUNT': 'EMscd6r9JnFiQ3bLoyjJY6eM78JrJceI',
@@ -129,9 +130,9 @@ STATICFILES_DIRS = [
 ]
 
 #MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_ROOT = '/vol/web/static/'
+MEDIA_ROOT = '/vol/web/media/'
 MEDIA_URL = '/static/media/'
 
 #STATIC_ROOT = os.path.join(BASE_DIR, 'public')
-STATIC_ROOT = '/vol/web/media/'
+STATIC_ROOT = '/vol/web/static/'
 STATIC_URL = '/static/static/'
