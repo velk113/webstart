@@ -4,16 +4,18 @@ services:
   app:
     build:
       context: .
+    container_name: django_dev
     ports:
       - "8000:8000"
     volumes:
       - ./app:/app
     env_file:
-      - ./.env
+      - ./app/.env
     depends_on:
       - db
   db: 
     image: postgres:12.0-alpine
+    container_name: postgres_dev
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
