@@ -4,6 +4,8 @@ COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 USER root
 
+RUN apk add certbot certbot-nginx
+
 RUN mkdir -p /vol/static
 RUN chmod 755 /vol/static
 
